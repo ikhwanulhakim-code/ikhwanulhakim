@@ -1,0 +1,62 @@
+---
+import FunCard from './FunCard.astro';
+---
+
+<section class="block" id="about">
+  <div class="eyebrow reveal" data-i18n="about.eyebrow">Tentang Saya</div>
+  <h2 class="section-title reveal delay-1" data-i18n-html="about.title">Builder, PM, <em>tukang pizza</em>.</h2>
+
+  <div class="about-grid">
+    <div class="manifesto reveal delay-2">
+      <p data-i18n-html="about.p1">Saya software engineer sekaligus project manager yang percaya bahwa <span class="hl">produk bagus lahir dari tim yang solid</span>. Sama betahnya di depan terminal maupun di ruang meeting klien.</p>
+      <p data-i18n="about.p2">Sudah pernah kirim sistem ERP, aplikasi mobile, platform pemerintahan, sampai SaaS buatan sendiri. Bukan cuma bisa ngoding — saya ngerti seluruh perjalanannya, dari ide mentah sampai live di tangan pengguna.</p>
+      <p class="sig" data-i18n="about.sig">// masih belajar, terus ngirim</p>
+    </div>
+
+    <div class="fun-grid reveal delay-3">
+      <FunCard label="Fakta · 01" icon="🍕" text="Bikin pizza dari nol, dan rasanya emang beneran enak. Ada foto buktinya." />
+      <FunCard label="Fakta · 02" icon="🐱" text="Suka kucing. Tidak perlu alasan lebih lanjut." />
+      <FunCard label="Fakta · 03" icon="🖥️" text="Website ini jalan di laptop Infinix lama lewat Proxmox. Serius. Dan masih hidup sampai sekarang." />
+      <FunCard label="Fakta · 04" icon="⚡" text="Pernah jadi PM, selalu jadi builder." />
+    </div>
+  </div>
+</section>
+
+<style>
+  section.block {
+    padding: 140px 32px; position: relative;
+    max-width: 1200px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { section.block { padding: 90px 20px; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 24px; white-space: nowrap;
+  }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--lime); }
+  h2.section-title {
+    font-size: clamp(34px, 5vw, 60px); line-height: 1.02;
+    font-weight: 800; letter-spacing: -0.035em;
+    margin: 0 0 18px; max-width: 22ch; text-wrap: balance;
+  }
+  h2.section-title em { font-style: normal; color: var(--lime); }
+  .about-grid {
+    display: grid; grid-template-columns: 1.15fr 1fr;
+    gap: 64px; align-items: start;
+  }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .manifesto p {
+    font-size: clamp(18px, 1.7vw, 22px); line-height: 1.55;
+    color: var(--text); margin: 0 0 20px; text-wrap: pretty;
+  }
+  .manifesto p :global(.hl) {
+    background: linear-gradient(transparent 60%, color-mix(in oklab, var(--lime) 30%, transparent) 60%);
+    padding: 0 2px;
+  }
+  .manifesto .sig {
+    margin-top: 28px; font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--muted);
+  }
+  .fun-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
