@@ -1,0 +1,202 @@
+---
+import { Image } from 'astro:assets';
+import ikhwanImg from '@/assets/ikhwan.png';
+---
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-noise" aria-hidden="true"></div>
+  <div class="hero-blob" aria-hidden="true"></div>
+  <div class="hero-blob two" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="badge reveal in">
+        <span class="pulse"></span>
+        <span data-i18n="hero.badge">🟢 Buka untuk proyek baru · Indonesia</span>
+      </div>
+      <h1 class="hero-title reveal delay-1 in" data-i18n-html="hero.title">
+        Saya bangun software.<br/>Saya <span class="ship">launch</span> produk.
+      </h1>
+      <p class="hero-sub reveal delay-2 in" data-i18n="hero.sub">
+        Software Engineer & Project Manager. Dari ide di kertas sampai live di production — saya yang urus semuanya. Kode rapi, hasil nyata.
+      </p>
+      <div class="hero-ctas reveal delay-3 in">
+        <a href="#contact" class="btn btn-primary">
+          <span data-i18n="hero.cta1">Yuk Ngobrol</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#work" class="btn btn-ghost" data-i18n="hero.cta2">Lihat Karya Saya</a>
+      </div>
+      <div class="socials reveal delay-4 in">
+        <a href="https://www.instagram.com/ikhwanulhakimm/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ikhwanulhakimm/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.78 0h4.37v1.92h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v7.46h-4.56V15.2c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.74 1.86-2.74 3.78V22H8V8z"/></svg>
+        </a>
+        <a href="https://wa.me/6289691964368" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.3c1.5.8 3.2 1.3 5 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C3.9 14.9 3.5 13.5 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5S16.7 20 12 20z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-col">
+      <div class="photo-frame">
+        <div class="photo-circle">
+          <Image class="portrait" src={ikhwanImg} alt="Muhammad Ikhwanul Hakim" />
+        </div>
+        <div class="sticker s1">
+          <span class="emoji">💻</span>
+          <span data-i18n="hero.sticker1">Lagi ngoding</span>
+        </div>
+        <div class="sticker s2">
+          <span class="emoji">🍕</span>
+          <span data-i18n="hero.sticker2">Lagi makan pizza</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 32px 80px; overflow: hidden;
+    background: var(--bg);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px; background-position: -1px -1px;
+    mask-image: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.9), transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.9), transparent 72%);
+    pointer-events: none;
+  }
+  .hero-noise {
+    position: absolute; inset: 0;
+    opacity: var(--noise-opacity); pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .hero-blob {
+    position: absolute; width: 620px; height: 620px;
+    top: 10%; right: -120px;
+    background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--lime) 22%, transparent), transparent 60%);
+    filter: blur(40px); animation: breathe 9s ease-in-out infinite; pointer-events: none;
+  }
+  .hero-blob.two {
+    width: 420px; height: 420px; top: auto; bottom: -80px; left: -80px; right: auto;
+    background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 16%, transparent), transparent 60%);
+    animation-duration: 11s; animation-delay: -3s;
+  }
+  .hero-inner {
+    position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo-col { order: -1; }
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 7px 14px 7px 12px; border: 1px solid var(--line-2);
+    border-radius: 999px; background: color-mix(in oklab, var(--bg-2) 60%, transparent);
+    backdrop-filter: blur(8px); font-size: 13px; font-weight: 500;
+    margin-bottom: 28px; color: var(--text); white-space: nowrap; max-width: 100%;
+  }
+  .badge > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+  .badge .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--lime);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--lime) 70%, transparent);
+    animation: pulse 2s ease-out infinite;
+  }
+  h1.hero-title {
+    font-size: clamp(40px, 6.5vw, 92px); line-height: 0.95;
+    font-weight: 800; letter-spacing: -0.045em;
+    margin: 0 0 24px; max-width: 14ch; text-wrap: balance; color: var(--text);
+  }
+  .hero-title .ship {
+    color: var(--lime); display: inline-block; position: relative;
+  }
+  .hero-title .ship::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+    height: 3px; background: var(--lime);
+    transform: scaleX(0.3); transform-origin: left;
+    animation: underline 3s ease-in-out 0.6s infinite alternate;
+  }
+  .hero-sub {
+    font-size: clamp(16px, 1.4vw, 19px); color: var(--text-soft);
+    max-width: 55ch; margin: 0 0 36px; line-height: 1.55; text-wrap: pretty;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 22px; border-radius: 14px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    cursor: pointer; border: 1px solid transparent;
+    transition: transform 180ms cubic-bezier(.2,.7,.3,1), background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--lime); color: var(--lime-ink); }
+  .btn-primary:hover {
+    transform: translateY(-2px); background: var(--lime-hover);
+    box-shadow: 0 12px 28px -10px color-mix(in oklab, var(--lime) 50%, transparent);
+  }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--line-2); }
+  .btn-ghost:hover {
+    transform: translateY(-2px); border-color: var(--text);
+    background: color-mix(in oklab, var(--text) 4%, transparent);
+  }
+  .btn .arrow { transition: transform 200ms ease; }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .socials { display: flex; gap: 10px; }
+  .socials a {
+    width: 42px; height: 42px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line-2); border-radius: 12px;
+    color: var(--muted); text-decoration: none;
+    transition: color 180ms ease, border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    background: transparent;
+  }
+  .socials a:hover {
+    color: var(--lime); border-color: var(--lime); transform: translateY(-2px);
+    background: color-mix(in oklab, var(--lime) 6%, transparent);
+  }
+  .socials svg { width: 18px; height: 18px; }
+  .hero-photo-col {
+    position: relative; display: flex; justify-content: center; align-items: center;
+  }
+  .photo-frame {
+    position: relative; width: 100%; max-width: 380px; aspect-ratio: 1 / 1;
+  }
+  .photo-frame::before {
+    content: ""; position: absolute; inset: -16px; border-radius: 50%;
+    border: 1px dashed var(--line-2); animation: spin 40s linear infinite;
+  }
+  .photo-circle {
+    position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+    background: radial-gradient(circle at 30% 25%, color-mix(in oklab, var(--lime) 28%, var(--bg-3)) 0%, var(--bg-3) 60%), var(--bg-3);
+    border: 2px solid var(--lime);
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--lime) 10%, transparent), 0 24px 60px -20px color-mix(in oklab, var(--lime) 40%, transparent);
+  }
+  .photo-circle :global(img.portrait) {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .sticker {
+    position: absolute; padding: 8px 14px; border-radius: 12px;
+    background: var(--card); border: 1px solid var(--line);
+    box-shadow: var(--card-shadow); font-size: 13px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+    animation: float 6s ease-in-out infinite;
+  }
+  .sticker .emoji { font-size: 16px; }
+  .sticker.s1 { top: 8%; right: -10px; animation-delay: -1s; }
+  .sticker.s2 { bottom: 14%; left: -20px; animation-delay: -3s; }
+  @media (max-width: 900px) {
+    .photo-frame { max-width: 260px; }
+    .sticker { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
