@@ -1,0 +1,83 @@
+:root[data-theme="dark"] {
+  --bg: #0F0F0F;
+  --bg-2: #151515;
+  --bg-3: #1C1C1C;
+  --card: #1A1A1A;
+  --card-hover: #202020;
+  --line: #262626;
+  --line-2: #333333;
+  --text: #F5F5F0;
+  --text-soft: #bdbdb7;
+  --muted: #8A8A82;
+  --lime: #AAFF00;
+  --lime-hover: #C0FF3A;
+  --lime-ink: #0a0a0a;
+  --coral: #FF7A66;
+  --sky: #7DD3FC;
+  --amber: #FBBF24;
+  --violet: #C4B5FD;
+  --grid-line: rgba(255,255,255,0.03);
+  --grid-line-2: rgba(255,255,255,0.05);
+  --noise-opacity: 0.035;
+  --nav-bg: rgba(15, 15, 15, 0.78);
+  --card-shadow: none;
+}
+:root[data-theme="light"] {
+  --bg: #FAFAFA;
+  --bg-2: #FFFFFF;
+  --bg-3: #F3F3EE;
+  --card: #FFFFFF;
+  --card-hover: #FFFFFF;
+  --line: #E8E8E2;
+  --line-2: #D4D4CE;
+  --text: #111111;
+  --text-soft: #3a3a36;
+  --muted: #6E6E66;
+  --lime: #7AC000;
+  --lime-hover: #6BAA00;
+  --lime-ink: #FFFFFF;
+  --coral: #E55A42;
+  --sky: #0EA5E9;
+  --amber: #D97706;
+  --violet: #7C3AED;
+  --grid-line: rgba(0,0,0,0.04);
+  --grid-line-2: rgba(0,0,0,0.06);
+  --noise-opacity: 0.025;
+  --nav-bg: rgba(250, 250, 250, 0.8);
+  --card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 320ms ease, color 320ms ease;
+}
+::selection { background: var(--lime); color: var(--lime-ink); }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: -0.01em; }
+
+@keyframes breathe {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.85; }
+  50% { transform: translate(30px,-20px) scale(1.08); opacity: 1; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--lime) 70%, transparent); }
+  70% { box-shadow: 0 0 0 10px color-mix(in oklab, var(--lime) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--lime) 0%, transparent); }
+}
+@keyframes underline { to { transform: scaleX(1); } }
+@keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pop { from { transform: scale(0.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
