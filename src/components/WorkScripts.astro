@@ -1,0 +1,10 @@
+<script>
+  document.querySelectorAll('.work-card').forEach((card) => {
+    card.addEventListener('mousemove', (e: Event) => {
+      const r = (card as HTMLElement).getBoundingClientRect();
+      const me = e as MouseEvent;
+      (card as HTMLElement).style.setProperty('--mx', `${me.clientX - r.left}px`);
+      (card as HTMLElement).style.setProperty('--my', `${me.clientY - r.top}px`);
+    });
+  });
+</script>

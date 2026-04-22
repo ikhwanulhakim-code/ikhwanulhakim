@@ -1,0 +1,101 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  desc: string;
+  tags: Array<{ label: string; color: string }>;
+  status: { label: string; live: boolean };
+  revealText: string;
+  size: 'big' | 'small';
+}
+
+const { num, title, desc, tags, status, revealText, size } = Astro.props;
+---
+
+<article class:list={['work-card', 'reveal', size]}>
+  <div class="work-deco">
+    <slot name="deco" />
+  </div>
+  <span class:list={['status', { live: status.live }]} data-i18n={status.live ? 'status.live' : undefined}>
+    {status.label}
+  </span>
+  <div>
+    <div class="work-num">{num}</div>
+    <h3 class="work-title">{title}</h3>
+    <p class="work-desc">{desc}</p>
+    <div class="tags">
+      {tags.map(tag => <span class:list={['tag', tag.color]}>{tag.label}</span>)}
+    </div>
+  </div>
+  <div class="work-reveal">
+    <span>{revealText}</span>
+    <span class="arrow">→</span>
+  </div>
+</article>
+
+<style>
+  .work-card {
+    position: relative; border: 1px solid var(--line); border-radius: 24px;
+    padding: 32px; background: var(--card); box-shadow: var(--card-shadow);
+    min-height: 340px; display: flex; flex-direction: column; justify-content: space-between;
+    overflow: hidden; cursor: pointer;
+    transition: transform 280ms cubic-bezier(.2,.7,.3,1), border-color 280ms ease, background 280ms ease, box-shadow 280ms ease;
+  }
+  .work-card.big { grid-column: span 4; min-height: 420px; }
+  .work-card.small { grid-column: span 2; min-height: 420px; }
+  @media (max-width: 960px) {
+    .work-card, .work-card.big, .work-card.small { grid-column: span 6; min-height: 320px; }
+  }
+  .work-card::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(500px 300px at var(--mx, 50%) var(--my, 0%), color-mix(in oklab, var(--lime) 10%, transparent), transparent 60%);
+    opacity: 0; transition: opacity 280ms ease; pointer-events: none;
+  }
+  .work-card:hover {
+    transform: translateY(-4px); border-color: var(--lime); background: var(--card-hover);
+    box-shadow: 0 20px 50px -20px color-mix(in oklab, var(--lime) 25%, transparent), var(--card-shadow);
+  }
+  .work-card:hover::before { opacity: 1; }
+  .work-deco { position: absolute; top: 0; right: 0; width: 180px; height: 180px; pointer-events: none; opacity: 0.9; }
+  .status {
+    position: absolute; top: 28px; right: 28px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    padding: 5px 10px; border-radius: 999px;
+    border: 1px solid var(--line-2); background: var(--bg-2);
+    display: inline-flex; align-items: center; gap: 6px; z-index: 2; color: var(--muted);
+  }
+  .status.live { color: var(--lime); border-color: color-mix(in oklab, var(--lime) 35%, transparent); }
+  .status.live::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime);
+    box-shadow: 0 0 8px color-mix(in oklab, var(--lime) 70%, transparent);
+  }
+  .work-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); margin-bottom: auto;
+  }
+  .work-title {
+    font-size: clamp(22px, 2.6vw, 30px); font-weight: 700;
+    letter-spacing: -0.02em; margin: 16px 0 10px; line-height: 1.1;
+  }
+  .work-desc { color: var(--text-soft); font-size: 15px; line-height: 1.5; margin: 0 0 18px; max-width: 44ch; }
+  .work-reveal {
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height 320ms ease, opacity 280ms ease, margin 280ms ease;
+    font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 8px;
+  }
+  .work-reveal .arrow { color: var(--lime); transition: transform 200ms ease; }
+  .work-card:hover .work-reveal { max-height: 40px; opacity: 1; margin-top: 6px; }
+  .work-card:hover .work-reveal .arrow { transform: translateX(4px); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    padding: 4px 9px; border-radius: 6px;
+    background: color-mix(in oklab, var(--text) 4%, transparent);
+    border: 1px solid var(--line); color: var(--text-soft);
+  }
+  .tag.lime { color: var(--lime); border-color: color-mix(in oklab, var(--lime) 25%, transparent); background: color-mix(in oklab, var(--lime) 8%, transparent); }
+  .tag.coral { color: var(--coral); border-color: color-mix(in oklab, var(--coral) 25%, transparent); background: color-mix(in oklab, var(--coral) 8%, transparent); }
+  .tag.sky { color: var(--sky); border-color: color-mix(in oklab, var(--sky) 25%, transparent); background: color-mix(in oklab, var(--sky) 8%, transparent); }
+  .tag.amber { color: var(--amber); border-color: color-mix(in oklab, var(--amber) 25%, transparent); background: color-mix(in oklab, var(--amber) 8%, transparent); }
+  .tag.violet { color: var(--violet); border-color: color-mix(in oklab, var(--violet) 25%, transparent); background: color-mix(in oklab, var(--violet) 8%, transparent); }
+</style>
