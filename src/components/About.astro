@@ -4,7 +4,7 @@ import FunCard from './FunCard.astro';
 
 <section class="block" id="about">
   <div class="eyebrow reveal" data-i18n="about.eyebrow">About</div>
-  <h2 class="section-title reveal delay-1" data-i18n-html="about.title">Builder, PM, <em>pizzaiolo</em>.</h2>
+  <h2 class="section-title reveal scale delay-1" data-i18n-html="about.title">Builder, PM, <em>pizzaiolo</em>.</h2>
 
   <div class="about-grid">
     <div class="manifesto reveal delay-2">
@@ -13,11 +13,11 @@ import FunCard from './FunCard.astro';
       <p class="sig" data-i18n="about.sig">// still learning, still shipping</p>
     </div>
 
-    <div class="fun-grid reveal delay-3">
-      <FunCard label="Fact · 01" icon="🍕" text="I make pizza from scratch. It slaps. There's photo evidence." />
-      <FunCard label="Fact · 02" icon="🐱" text="I love cats. No further explanation will be provided." />
-      <FunCard label="Fact · 03" icon="🖥️" text="This site runs on my old Infinix laptop via Proxmox. Yes, really. It works." />
-      <FunCard label="Fact · 04" icon="⚡" text="Once a PM, always a builder." />
+    <div class="fun-grid">
+      <FunCard label="Fact · 01" icon="🍕" text="I make pizza from scratch. It slaps. There's photo evidence." delayClass="delay-1" />
+      <FunCard label="Fact · 02" icon="🐱" text="I love cats. No further explanation will be provided." delayClass="delay-2" />
+      <FunCard label="Fact · 03" icon="🖥️" text="This site runs on my old Infinix laptop via Proxmox. Yes, really. It works." delayClass="delay-3" />
+      <FunCard label="Fact · 04" icon="⚡" text="Once a PM, always a builder." delayClass="delay-4" />
     </div>
   </div>
 </section>

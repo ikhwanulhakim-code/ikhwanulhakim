@@ -146,7 +146,7 @@ src/
   "jobTitle": "Software Engineer & Project Manager",
   "address": { "@type": "PostalAddress", "addressCountry": "ID" },
   "sameAs": [
-    "https://www.instagram.com/ikhwanulhakimm/",
+    "https://www.instagram.com/ikhwanulhakim.me/",
     "https://www.linkedin.com/in/ikhwanulhakimm/"
   ]
 }

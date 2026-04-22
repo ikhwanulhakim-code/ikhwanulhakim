@@ -7,12 +7,13 @@ interface Props {
   status: { label: string; live: boolean };
   revealText: string;
   size: 'big' | 'small';
+  delayClass?: string;
 }
 
-const { num, title, desc, tags, status, revealText, size } = Astro.props;
+const { num, title, desc, tags, status, revealText, size, delayClass } = Astro.props;
 ---
 
-<article class:list={['work-card', 'reveal', size]}>
+<article class:list={['work-card', 'reveal', size, delayClass]}>
   <div class="work-deco">
     <slot name="deco" />
   </div>

@@ -85,3 +85,9 @@ body {
 @keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pop { from { transform: scale(0.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @keyframes draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob { animation: none !important; }
+  .sticker { animation: none !important; }
+  .photo-frame::before { animation: none !important; }
+}

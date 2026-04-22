@@ -8,7 +8,7 @@
 [![Lighthouse](https://img.shields.io/badge/Lighthouse-98%2F100%2F81%2F100-7AC000?style=flat-square)](https://ikhwanulhakim.vercel.app)
 [![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?style=flat-square&logo=astro&logoColor=white)](https://astro.build)
 
-[🌐 Live Site](https://ikhwanulhakim.vercel.app) · [💬 WhatsApp](https://wa.me/6289691964368) · [💼 LinkedIn](https://www.linkedin.com/in/ikhwanulhakimm/) · [📷 Instagram](https://www.instagram.com/ikhwanulhakimm/)
+[🌐 Live Site](https://ikhwanulhakim.vercel.app) · [💬 WhatsApp](https://wa.me/6289691964368) · [💼 LinkedIn](https://www.linkedin.com/in/ikhwanulhakimm/) · [📷 Instagram](https://www.instagram.com/ikhwanulhakim.me/)
 
 </div>
 

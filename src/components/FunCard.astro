@@ -3,11 +3,12 @@ interface Props {
   label: string;
   icon: string;
   text: string;
+  delayClass?: string;
 }
-const { label, icon, text } = Astro.props;
+const { label, icon, text, delayClass } = Astro.props;
 ---
 
-<div class="fun-card">
+<div class:list={['fun-card', 'reveal', delayClass]}>
   <span class="tiny">{label}</span>
   <div class="fun-icon">{icon}</div>
   <p>{text}</p>
