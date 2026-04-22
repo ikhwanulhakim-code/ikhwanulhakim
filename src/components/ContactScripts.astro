@@ -1,0 +1,116 @@
+<script>
+  const state = { step: 1, type: '', stage: '', budget: '', brief: '', name: '', contact: '' };
+  const totalSteps = 4;
+  const steps = document.querySelectorAll<HTMLElement>('.step');
+  const pips = document.querySelectorAll<HTMLElement>('.progress-steps .pip');
+  const btnBack = document.getElementById('btnBack') as HTMLButtonElement;
+  const btnNext = document.getElementById('btnNext') as HTMLButtonElement;
+  const btnNextLabel = document.getElementById('btnNextLabel') as HTMLElement;
+  const stepNum = document.getElementById('stepNum') as HTMLElement;
+  const stepNav = document.getElementById('stepNav') as HTMLElement;
+  const progressWrap = document.getElementById('progressWrap') as HTMLElement;
+
+  const dataEl = document.getElementById('i18n-data');
+  const I18N = dataEl ? JSON.parse(dataEl.textContent || '{}') : {};
+  let currentLang: string = localStorage.getItem('lang') || 'id';
+
+  function t(key: string): string { return I18N[currentLang]?.[key] || key; }
+
+  function updateSubmitLabel() {
+    if (!btnNextLabel) return;
+    if (state.step === totalSteps) btnNextLabel.textContent = t('form.send');
+    else if (state.step <= totalSteps) btnNextLabel.textContent = t('form.next');
+  }
+
+  function canAdvance(): boolean {
+    if (state.step === 1) return !!state.type;
+    if (state.step === 2) return !!state.stage;
+    if (state.step === 3) return !!state.budget;
+    if (state.step === 4) return state.brief.trim().length > 0 && state.name.trim().length > 0 && state.contact.trim().length > 0;
+    return false;
+  }
+
+  function render() {
+    steps.forEach(s => s.classList.remove('active'));
+    const cur = document.querySelector<HTMLElement>(`.step[data-step="${state.step}"]`);
+    if (cur) cur.classList.add('active');
+
+    pips.forEach((pip, i) => {
+      pip.classList.remove('active', 'done');
+      if (i + 1 < state.step) pip.classList.add('done');
+      else if (i + 1 === state.step) pip.classList.add('active');
+    });
+
+    stepNum.textContent = String(Math.min(state.step, totalSteps)).padStart(2, '0');
+    btnBack.style.visibility = state.step > 1 && state.step <= totalSteps ? 'visible' : 'hidden';
+
+    if (state.step > totalSteps) {
+      stepNav.style.display = 'none';
+      progressWrap.style.display = 'none';
+    } else {
+      stepNav.style.display = 'flex';
+      progressWrap.style.display = 'flex';
+    }
+
+    updateSubmitLabel();
+    btnNext.disabled = !canAdvance();
+  }
+
+  document.querySelectorAll('.pills').forEach(group => {
+    const field = (group as HTMLElement).dataset.field!;
+    group.querySelectorAll('.pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        group.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        (state as any)[field] = (pill as HTMLElement).dataset.value;
+        btnNext.disabled = !canAdvance();
+        setTimeout(() => {
+          if (state.step < totalSteps) { state.step++; render(); }
+        }, 280);
+      });
+    });
+  });
+
+  const briefEl = document.getElementById('brief') as HTMLTextAreaElement;
+  const nameEl = document.getElementById('name') as HTMLInputElement;
+  const contactEl = document.getElementById('contact-info') as HTMLInputElement;
+  [briefEl, nameEl, contactEl].forEach(el => {
+    el?.addEventListener('input', () => {
+      state.brief = briefEl?.value || '';
+      state.name = nameEl?.value || '';
+      state.contact = contactEl?.value || '';
+      btnNext.disabled = !canAdvance();
+    });
+  });
+
+  btnBack.addEventListener('click', () => { if (state.step > 1) { state.step--; render(); } });
+
+  btnNext.addEventListener('click', () => {
+    if (!canAdvance()) return;
+    if (state.step < totalSteps) {
+      state.step++; render();
+    } else {
+      const labels = currentLang === 'id'
+        ? { greet: 'Halo Ikhwan! 👋', t1: 'Tipe proyek', t2: 'Tahap', t3: 'Budget', t4: 'Deskripsi', t5: 'Nama', t6: 'Kontak' }
+        : { greet: 'Hey Ikhwan! 👋', t1: 'Project type', t2: 'Stage', t3: 'Budget', t4: 'Description', t5: 'Name', t6: 'Contact' };
+
+      const msg = [
+        labels.greet, '',
+        `*${labels.t1}:* ${state.type}`,
+        `*${labels.t2}:* ${state.stage}`,
+        `*${labels.t3}:* ${state.budget}`, '',
+        `*${labels.t4}:*`, state.brief, '',
+        `*${labels.t5}:* ${state.name}`,
+        `*${labels.t6}:* ${state.contact}`
+      ].join('\n');
+
+      const url = `https://wa.me/6289691964368?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank', 'noopener');
+
+      state.step = totalSteps + 1;
+      render();
+    }
+  });
+
+  render();
+</script>

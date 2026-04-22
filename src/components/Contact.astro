@@ -1,0 +1,241 @@
+---
+import ContactScripts from './ContactScripts.astro';
+---
+
+<section class="block contact" id="contact">
+  <div class="eyebrow reveal" data-i18n="contact.eyebrow">Hubungi Saya</div>
+  <h2 class="section-title reveal delay-1" data-i18n-html="contact.title">Ada proyek yang <em>kepingin</em> dibangun?</h2>
+  <p class="section-lede reveal delay-2" data-i18n="contact.lede">Ceritain sedikit — 3 pertanyaan singkat, saya janji. Abis itu satu textarea doang.</p>
+
+  <div class="form-shell reveal delay-3" id="formShell">
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-steps" id="progressSteps">
+        <div class="pip"></div>
+        <div class="pip"></div>
+        <div class="pip"></div>
+        <div class="pip"></div>
+      </div>
+      <div class="progress-label"><b id="stepNum">01</b> / 04</div>
+    </div>
+
+    <div class="step active" data-step="1">
+      <h3 data-i18n="q1.title">Butuh apa nih?</h3>
+      <p class="hint" data-i18n="q1.hint">Pilih yang paling mendekati — nanti bisa kita sesuaikan.</p>
+      <div class="pills" data-field="type">
+        <button class="pill" data-value="Mobile App"><span data-i18n="q1.a1">Aplikasi Mobile</span><span class="marker"></span></button>
+        <button class="pill" data-value="Web App"><span data-i18n="q1.a2">Web App</span><span class="marker"></span></button>
+        <button class="pill" data-value="SaaS / Platform"><span data-i18n="q1.a3">SaaS / Platform</span><span class="marker"></span></button>
+        <button class="pill" data-value="ERP / Enterprise"><span data-i18n="q1.a4">ERP / Enterprise</span><span class="marker"></span></button>
+        <button class="pill" data-value="Something else"><span data-i18n="q1.a5">Ada yang lain</span><span class="marker"></span></button>
+      </div>
+    </div>
+
+    <div class="step" data-step="2">
+      <h3 data-i18n="q2.title">Sudah sampai mana?</h3>
+      <p class="hint" data-i18n="q2.hint">Nggak ada jawaban yang salah. Beneran.</p>
+      <div class="pills" data-field="stage">
+        <button class="pill" data-value="Just an idea"><span data-i18n="q2.a1">Baru ada ide — tolong bantu scope-nya</span><span class="marker"></span></button>
+        <button class="pill" data-value="Have specs"><span data-i18n="q2.a2">Sudah ada spek — tinggal dibangun</span><span class="marker"></span></button>
+        <button class="pill" data-value="Existing product"><span data-i18n="q2.a3">Produk sudah jalan — perlu ditingkatkan</span><span class="marker"></span></button>
+        <button class="pill" data-value="Yesterday"><span data-i18n="q2.a4">Harusnya sudah selesai kemarin</span><span class="marker"></span></button>
+      </div>
+    </div>
+
+    <div class="step" data-step="3">
+      <h3 data-i18n="q3.title">Kira-kira budgetnya?</h3>
+      <p class="hint" data-i18n="q3.hint">Perkiraan kasar juga oke. Kita cari yang realistis bareng-bareng.</p>
+      <div class="pills" data-field="budget">
+        <button class="pill" data-value="<5jt"><span data-i18n="q3.a1">Di bawah 5 juta</span><span class="marker"></span></button>
+        <button class="pill" data-value="5-20jt"><span data-i18n="q3.a2">5 – 20 juta</span><span class="marker"></span></button>
+        <button class="pill" data-value="20-50jt"><span data-i18n="q3.a3">20 – 50 juta</span><span class="marker"></span></button>
+        <button class="pill" data-value="Let's talk"><span data-i18n="q3.a4">Mending ngobrol dulu</span><span class="marker"></span></button>
+      </div>
+    </div>
+
+    <div class="step" data-step="4">
+      <h3 data-i18n="q4.title">Hampir selesai — siapa dan apa.</h3>
+      <p class="hint" data-i18n="q4.hint">Yang penting-penting aja. Nggak perlu panjang-panjang.</p>
+      <div class="field">
+        <label for="brief" data-i18n="q4.l.brief">Ceritain proyeknya</label>
+        <textarea id="brief" data-i18n-ph="q4.ph.brief" placeholder="Mau bikin apa? Untuk siapa? Masalah apa yang mau diselesaikan?"></textarea>
+      </div>
+      <div class="field-grid">
+        <div class="field">
+          <label for="name" data-i18n="q4.l.name">Nama kamu</label>
+          <input id="name" type="text" data-i18n-ph="q4.ph.name" placeholder="misal: Budi Santoso" />
+        </div>
+        <div class="field">
+          <label for="contact-info" data-i18n="q4.l.contact">WhatsApp atau Email</label>
+          <input id="contact-info" type="text" data-i18n-ph="q4.ph.contact" placeholder="+62 atau kamu@email.com" />
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-step="5">
+      <div class="success">
+        <div class="check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+        <h3 data-i18n="success.title">Membuka WhatsApp…</h3>
+        <p data-i18n="success.sub">Saya balas paling lama 24 jam. Biasanya jauh lebih cepat dari itu.</p>
+      </div>
+    </div>
+
+    <div class="step-nav" id="stepNav">
+      <button class="btn-back" id="btnBack" style="visibility: hidden;" data-i18n="form.back">← Kembali</button>
+      <button class="btn-submit" id="btnNext" disabled>
+        <span id="btnNextLabel" data-i18n="form.next">Lanjut →</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="fallback reveal delay-4">
+    <div class="tiny" data-i18n="fallback.tiny">Mau langsung hubungi? Silakan pilih.</div>
+    <div class="row">
+      <a href="https://wa.me/6289691964368" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.3c1.5.8 3.2 1.3 5 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.linkedin.com/in/ikhwanulhakimm/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.78 0h4.37v1.92h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v7.46h-4.56V15.2c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.74 1.86-2.74 3.78V22H8V8z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/ikhwanulhakimm/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<ContactScripts />
+
+<style>
+  section.block {
+    padding: 140px 32px; position: relative;
+    max-width: 1200px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { section.block { padding: 90px 20px; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 24px; white-space: nowrap;
+  }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--lime); }
+  h2.section-title {
+    font-size: clamp(34px, 5vw, 60px); line-height: 1.02;
+    font-weight: 800; letter-spacing: -0.035em;
+    margin: 0 0 18px; max-width: 22ch; text-wrap: balance;
+  }
+  h2.section-title em { font-style: normal; color: var(--lime); }
+  .section-lede { color: var(--muted); font-size: 17px; max-width: 60ch; margin: 0 0 64px; }
+  .form-shell {
+    margin-top: 56px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 28px; padding: 40px; position: relative; overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  @media (max-width: 720px) { .form-shell { padding: 28px 22px; border-radius: 22px; } }
+  .progress-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+  .progress-steps { display: flex; gap: 6px; flex: 1; }
+  .progress-steps .pip { flex: 1; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; position: relative; }
+  .progress-steps .pip::after {
+    content: ""; position: absolute; inset: 0; background: var(--lime);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 450ms cubic-bezier(.2,.7,.3,1);
+  }
+  .progress-steps .pip.done::after { transform: scaleX(1); }
+  .progress-steps .pip.active::after { transform: scaleX(0.6); }
+  .progress-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); }
+  .progress-label b { color: var(--lime); font-weight: 500; }
+  .step { display: none; animation: stepIn 360ms cubic-bezier(.2,.7,.3,1); }
+  .step.active { display: block; }
+  .step h3 {
+    font-size: clamp(26px, 3vw, 36px); font-weight: 700;
+    letter-spacing: -0.025em; margin: 0 0 8px; line-height: 1.1; color: var(--text);
+  }
+  .step .hint { color: var(--muted); font-size: 14px; margin: 0 0 28px; }
+  .pills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (max-width: 600px) { .pills { grid-template-columns: 1fr; } }
+  .pill {
+    text-align: left; padding: 18px 20px; border-radius: 14px;
+    background: var(--bg-3); border: 1px solid var(--line);
+    color: var(--text); font: inherit; font-size: 15px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+    transition: background 180ms ease, border-color 180ms ease, transform 160ms ease, color 180ms ease;
+  }
+  .pill:hover { border-color: var(--lime); background: color-mix(in oklab, var(--lime) 5%, var(--bg-3)); transform: translateY(-2px); }
+  .pill.selected { border-color: var(--lime); background: color-mix(in oklab, var(--lime) 12%, var(--bg-3)); color: var(--lime); }
+  .pill .marker {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1.5px solid var(--line-2);
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: border-color 180ms ease, background 180ms ease;
+    flex-shrink: 0; margin-left: 10px;
+  }
+  .pill.selected .marker { border-color: var(--lime); background: var(--lime); }
+  .pill.selected .marker::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime-ink); }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .field input, .field textarea {
+    width: 100%; background: var(--bg-3); border: 1px solid var(--line);
+    color: var(--text); padding: 14px 16px; border-radius: 12px;
+    font: inherit; font-size: 15px;
+    transition: border-color 180ms ease, background 180ms ease;
+    resize: vertical; font-family: inherit;
+  }
+  .field textarea { min-height: 120px; line-height: 1.5; }
+  .field input:focus, .field textarea:focus {
+    outline: none; border-color: var(--lime);
+    background: color-mix(in oklab, var(--lime) 3%, var(--bg-3));
+  }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 600px) { .field-grid { grid-template-columns: 1fr; } }
+  .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 12px; }
+  .btn-back {
+    background: transparent; border: 1px solid var(--line-2);
+    color: var(--muted); padding: 12px 18px; border-radius: 12px;
+    cursor: pointer; font: inherit; font-weight: 500; font-size: 14px;
+    transition: color 180ms ease, border-color 180ms ease;
+  }
+  .btn-back:hover { color: var(--text); border-color: var(--text); }
+  .btn-submit {
+    background: var(--lime); color: var(--lime-ink);
+    border: 0; padding: 16px 26px; border-radius: 14px;
+    cursor: pointer; font: inherit; font-weight: 700; font-size: 15px;
+    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .btn-submit:hover { transform: translateY(-2px); background: var(--lime-hover); box-shadow: 0 12px 28px -10px color-mix(in oklab, var(--lime) 50%, transparent); }
+  .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .success { text-align: center; padding: 40px 20px; }
+  .success .check {
+    width: 84px; height: 84px; border-radius: 50%;
+    background: color-mix(in oklab, var(--lime) 12%, transparent);
+    border: 2px solid var(--lime);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 24px; animation: pop 480ms cubic-bezier(.2,.9,.3,1.4);
+  }
+  .success .check svg { width: 40px; height: 40px; color: var(--lime); }
+  .success .check svg path { stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw 600ms 200ms cubic-bezier(.2,.7,.3,1) forwards; }
+  .success h3 { font-size: 28px; margin: 0 0 10px; letter-spacing: -0.02em; }
+  .success p { color: var(--muted); margin: 0; }
+  .fallback { margin-top: 40px; text-align: center; }
+  .fallback .tiny { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+  .fallback .row { display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .fallback a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 999px;
+    border: 1px solid var(--line-2); color: var(--text);
+    text-decoration: none; font-size: 14px; background: var(--card);
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+  }
+  .fallback a:hover { border-color: var(--lime); color: var(--lime); background: color-mix(in oklab, var(--lime) 6%, var(--card)); }
+  .fallback a svg { width: 14px; height: 14px; }
+</style>
