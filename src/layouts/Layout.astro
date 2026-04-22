@@ -1,0 +1,81 @@
+---
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/500.css';
+import '@fontsource/plus-jakarta-sans/600.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/plus-jakarta-sans/800.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@/styles/global.css';
+import { SEO } from 'astro-seo';
+
+const { title = 'Muhammad Ikhwanul Hakim — Software Engineer & Project Manager' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <SEO
+    title={title}
+    titleTemplate="%s | ikhwanulhakim.dev"
+    description="Software Engineer & Project Manager based in Indonesia. I take your idea from a napkin sketch to production — clean code, real delivery, zero fluff."
+    canonical={canonicalURL}
+    openGraph={{
+      basic: {
+        title: 'Muhammad Ikhwanul Hakim — Software Engineer & Project Manager',
+        type: 'website',
+        image: new URL('/og-image.png', Astro.site).toString(),
+        url: canonicalURL.toString()
+      },
+      optional: {
+        siteName: 'ikhwanulhakim.dev',
+        locale: 'id_ID',
+        localeAlternate: ['en_US'],
+        description: 'Software Engineer & Project Manager based in Indonesia. Clean code, real delivery, zero fluff.'
+      },
+      image: {
+        width: 1200,
+        height: 630,
+        alt: 'Muhammad Ikhwanul Hakim — Software Engineer & Project Manager'
+      }
+    }}
+    twitter={{
+      card: 'summary_large_image',
+      title: 'Muhammad Ikhwanul Hakim — Software Engineer & Project Manager',
+      description: 'Software Engineer & Project Manager based in Indonesia. Clean code, real delivery, zero fluff.',
+      image: new URL('/og-image.png', Astro.site).toString()
+    }}
+    languageAlternates={[
+      { href: canonicalURL.toString(), hrefLang: 'id' },
+      { href: canonicalURL.toString(), hrefLang: 'en' }
+    ]}
+    extend={{
+      meta: [
+        { name: 'theme-color', content: '#7AC000' },
+        { name: 'author', content: 'Muhammad Ikhwanul Hakim' }
+      ],
+      link: [
+        { rel: 'sitemap', href: '/sitemap-index.xml' }
+      ]
+    }}
+  />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Ikhwanul Hakim",
+    "url": "https://ikhwanulhakim.dev",
+    "jobTitle": "Software Engineer & Project Manager",
+    "address": { "@type": "PostalAddress", "addressCountry": "ID" },
+    "sameAs": [
+      "https://www.instagram.com/ikhwanulhakimm/",
+      "https://www.linkedin.com/in/ikhwanulhakimm/"
+    ]
+  })} />
+  <script data-goatcounter="https://ikhwanulhakim.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <slot />
+</body>
+</html>
