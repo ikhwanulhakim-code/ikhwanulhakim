@@ -1,0 +1,121 @@
+---
+import NavScripts from './NavScripts.astro';
+---
+
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo" aria-label="Home">
+    <span class="dot"></span>
+    <span>ikhwan<span class="muted-text">.dev</span></span>
+  </a>
+  <div class="nav-right">
+    <a href="#work" class="navlink" data-i18n="nav.work">Karya</a>
+    <a href="#experience" class="navlink" data-i18n="nav.experience">Perjalanan</a>
+    <a href="#about" class="navlink" data-i18n="nav.about">Tentang Saya</a>
+    <a href="#contact" class="cta" data-i18n="nav.cta">Ngobrol Yuk</a>
+
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <span class="slider"></span>
+      <button data-lang="id" class="active">ID</button>
+      <button data-lang="en">EN</button>
+    </div>
+
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+      <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+      <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<NavScripts />
+
+<style>
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 280ms ease, backdrop-filter 280ms ease, border-color 280ms ease, padding 280ms ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled {
+    background: var(--nav-bg);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom-color: var(--line);
+    padding: 12px 32px;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; letter-spacing: -0.02em; font-size: 16px;
+    text-decoration: none; color: var(--text);
+  }
+  .nav-logo .dot {
+    width: 10px; height: 10px; border-radius: 3px;
+    background: var(--lime);
+    box-shadow: 0 0 16px color-mix(in oklab, var(--lime) 55%, transparent);
+    transition: transform 200ms ease;
+  }
+  .nav-logo:hover .dot { transform: rotate(45deg) scale(1.1); }
+  .nav-logo .muted-text { color: var(--muted); }
+  .nav-right { display: flex; gap: 6px; align-items: center; }
+  .nav-right a.navlink {
+    color: var(--text); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    padding: 8px 14px; border-radius: 999px;
+    transition: background 180ms ease, color 180ms ease;
+    white-space: nowrap;
+  }
+  .nav-right a.navlink:hover { background: color-mix(in oklab, var(--text) 7%, transparent); }
+  .nav-right a.cta {
+    background: var(--lime); color: var(--lime-ink);
+    font-weight: 700; padding: 8px 16px; margin-left: 4px;
+    text-decoration: none; border-radius: 999px; font-size: 14px;
+    transition: background 180ms ease, transform 180ms ease;
+    white-space: nowrap;
+  }
+  .nav-right a.cta:hover { background: var(--lime-hover); transform: translateY(-1px); }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 999px;
+    border: 1px solid var(--line-2); background: transparent;
+    color: var(--text); cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    padding: 0; font: inherit;
+  }
+  .icon-btn:hover { border-color: var(--text); background: color-mix(in oklab, var(--text) 6%, transparent); transform: translateY(-1px); }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .lang-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line-2); border-radius: 999px;
+    padding: 3px; margin-left: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+  }
+  .lang-toggle button {
+    background: transparent; border: 0; cursor: pointer;
+    padding: 5px 11px; font-size: 11px; font-weight: 500;
+    color: var(--muted); border-radius: 999px;
+    letter-spacing: 0.04em; transition: color 200ms ease;
+    font-family: inherit; position: relative; z-index: 2;
+  }
+  .lang-toggle button.active { color: var(--lime-ink); }
+  .lang-toggle .slider {
+    position: absolute; top: 3px; left: 3px; bottom: 3px;
+    width: calc(50% - 3px); background: var(--lime);
+    border-radius: 999px;
+    transition: transform 260ms cubic-bezier(.2,.8,.3,1);
+    z-index: 1;
+  }
+  .lang-toggle.is-en .slider { transform: translateX(100%); }
+  @media (max-width: 820px) {
+    .nav { padding: 14px 16px; }
+    .nav.scrolled { padding: 10px 16px; }
+    .nav-right a.navlink { display: none; }
+    .nav-right a.cta { display: none; }
+  }
+</style>
