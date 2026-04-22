@@ -13,7 +13,7 @@ const { title = 'Muhammad Ikhwanul Hakim — Software Engineer & Project Manager
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<html lang="id" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,8 +31,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       },
       optional: {
         siteName: 'ikhwanulhakim.dev',
-        locale: 'id_ID',
-        localeAlternate: ['en_US'],
+        locale: 'en_US',
+        localeAlternate: ['id_ID'],
         description: 'Software Engineer & Project Manager based in Indonesia. Clean code, real delivery, zero fluff.'
       },
       image: {
@@ -48,8 +48,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       image: new URL('/og-image.png', Astro.site).toString()
     }}
     languageAlternates={[
-      { href: canonicalURL.toString(), hrefLang: 'id' },
-      { href: canonicalURL.toString(), hrefLang: 'en' }
+      { href: canonicalURL.toString(), hrefLang: 'en' },
+      { href: canonicalURL.toString(), hrefLang: 'id' }
     ]}
     extend={{
       meta: [

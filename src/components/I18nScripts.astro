@@ -9,7 +9,7 @@ import { translations } from '@/data/i18n';
   if (!dataEl) throw new Error('i18n data not found');
   const I18N = JSON.parse(dataEl.textContent || '{}');
 
-  let currentLang: string = localStorage.getItem('lang') || 'id';
+  let currentLang: string = localStorage.getItem('lang') || 'en';
 
   function applyLang(lang: string) {
     currentLang = lang;
