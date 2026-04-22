@@ -1,0 +1,58 @@
+---
+interface Props {
+  when: string;
+  company: string;
+  role: string;
+  desc: string;
+  chip?: { label: string; variant: 'current' | 'sabbatical' };
+  isGap?: boolean;
+  delayClass?: string;
+}
+
+const { when, company, role, desc, chip, isGap, delayClass } = Astro.props;
+---
+
+<div class:list={['entry', 'reveal', { gap: isGap }, delayClass]}>
+  <div class="when">
+    <span>{when}</span>
+    <span>·</span>
+    <span class="company">{company}</span>
+  </div>
+  <h3>
+    {role}
+    {chip && <span class:list={['chip', { 'gap-chip': chip.variant === 'sabbatical' }]}>{chip.label}</span>}
+  </h3>
+  <p>{desc}</p>
+</div>
+
+<style>
+  .entry { position: relative; padding: 24px 0 40px 24px; }
+  .entry::before {
+    content: ""; position: absolute; left: -34px; top: 32px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--lime);
+    transition: transform 200ms ease, background 200ms ease;
+  }
+  .entry:hover::before { transform: scale(1.3); background: var(--lime); }
+  .entry.gap::before { border-color: var(--amber); }
+  .when {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); margin-bottom: 8px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .when .company { color: var(--text); font-weight: 500; }
+  h3 {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+    margin: 0 0 10px; color: var(--text);
+  }
+  h3 .chip {
+    font-size: 11px; font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 8px; border-radius: 6px;
+    background: color-mix(in oklab, var(--lime) 12%, transparent);
+    color: var(--lime); margin-left: 8px; vertical-align: middle;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  h3 .gap-chip { background: color-mix(in oklab, var(--amber) 15%, transparent); color: var(--amber); }
+  p { color: var(--text-soft); margin: 0; max-width: 64ch; font-size: 16px; }
+</style>

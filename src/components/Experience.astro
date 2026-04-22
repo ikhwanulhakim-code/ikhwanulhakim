@@ -1,0 +1,68 @@
+---
+import TimelineEntry from './TimelineEntry.astro';
+---
+
+<section class="block" id="experience">
+  <div class="eyebrow reveal" data-i18n="exp.eyebrow">Perjalanan Karier</div>
+  <h2 class="section-title reveal delay-1" data-i18n-html="exp.title">Resume yang <em>apa adanya</em>.</h2>
+  <p class="section-lede reveal delay-2" data-i18n="exp.lede">Tanpa jargon lebay. Ini yang beneran saya kerjakan dan yang beneran saya pelajari.</p>
+
+  <div class="timeline">
+    <TimelineEntry
+      when="Sep 2025 — Present"
+      company="PT. Instrumeta Teknologi Nusantara"
+      role="Software Engineer"
+      desc="Applied as PM. Ended up as SE because the team needed builders. Adapting fast is a skill too — and the code is better for it."
+      chip={{ label: 'current', variant: 'current' }}
+    />
+    <TimelineEntry
+      when="Jul — Aug 2025"
+      company="The Productive Unemployment Era"
+      role="Self-directed interlude"
+      desc="Learned pizza-making from scratch. Set up a Proxmox homeserver. Came back sharper and well-fed."
+      chip={{ label: 'sabbatical', variant: 'sabbatical' }}
+      isGap={true}
+      delayClass="delay-1"
+    />
+    <TimelineEntry
+      when="Dec 2024 — Jun 2025"
+      company="PT. Ruang Algo Multimatics"
+      role="Project Manager"
+      desc="Led delivery across ERP, government, clinical, and admin platforms. 5+ concurrent products. PRDs, sprints, UAT, stakeholders — all of it."
+      delayClass="delay-2"
+    />
+    <TimelineEntry
+      when="Oct 2023 — Nov 2024"
+      company="PT. Ruang Algo Multimatics"
+      role="Programmer — Mobile + QA"
+      desc="Flutter dev for iOS & Android. Wore the QA hat too. Because someone had to, and it turns out that someone was me."
+      delayClass="delay-3"
+    />
+  </div>
+</section>
+
+<style>
+  section.block {
+    padding: 140px 32px; position: relative;
+    max-width: 1200px; margin: 0 auto;
+  }
+  @media (max-width: 720px) { section.block { padding: 90px 20px; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 24px; white-space: nowrap;
+  }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--lime); }
+  h2.section-title {
+    font-size: clamp(34px, 5vw, 60px); line-height: 1.02;
+    font-weight: 800; letter-spacing: -0.035em;
+    margin: 0 0 18px; max-width: 22ch; text-wrap: balance;
+  }
+  h2.section-title em { font-style: normal; color: var(--lime); }
+  .section-lede { color: var(--muted); font-size: 17px; max-width: 60ch; margin: 0 0 64px; }
+  .timeline {
+    position: relative; padding-left: 28px;
+    border-left: 1px dashed var(--line-2); margin-top: 40px;
+  }
+</style>
