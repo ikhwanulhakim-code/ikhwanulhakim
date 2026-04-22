@@ -1,0 +1,59 @@
+---
+import { translations } from '@/data/i18n';
+---
+
+<script type="application/json" id="i18n-data" set:html={JSON.stringify(translations)}></script>
+
+<script>
+  const dataEl = document.getElementById('i18n-data');
+  if (!dataEl) throw new Error('i18n data not found');
+  const I18N = JSON.parse(dataEl.textContent || '{}');
+
+  let currentLang: string = localStorage.getItem('lang') || 'id';
+
+  function applyLang(lang: string) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    const dict = I18N[lang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = (el as HTMLElement).dataset.i18n;
+      if (dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = (el as HTMLElement).dataset.i18nHtml;
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = (el as HTMLElement).dataset.i18nPh;
+      if (dict[key] != null) el.setAttribute('placeholder', dict[key]);
+    });
+
+    const tog = document.getElementById('langToggle');
+    tog?.classList.toggle('is-en', lang === 'en');
+    tog?.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+
+    updateSubmitLabel();
+  }
+
+  document.getElementById('langToggle')?.addEventListener('click', (e: Event) => {
+    const btn = (e.target as Element).closest('button[data-lang]');
+    if (!btn) return;
+    applyLang((btn as HTMLElement).dataset.lang!);
+  });
+
+  function t(key: string): string { return I18N[currentLang]?.[key] || key; }
+
+  function updateSubmitLabel() {
+    const btnNextLabel = document.getElementById('btnNextLabel');
+    const stepNumEl = document.getElementById('stepNum');
+    if (!btnNextLabel || !stepNumEl) return;
+    const step = parseInt(stepNumEl.textContent || '1');
+    if (step >= 4) btnNextLabel.textContent = t('form.send');
+    else btnNextLabel.textContent = t('form.next');
+  }
+
+  applyLang(currentLang);
+</script>
