@@ -1,13 +1,24 @@
 ---
+import Layout from '@/layouts/Layout.astro';
+import Nav from '@/components/Nav.astro';
+import I18nScripts from '@/components/I18nScripts.astro';
+import Hero from '@/components/Hero.astro';
+import Work from '@/components/Work.astro';
+import Experience from '@/components/Experience.astro';
+import About from '@/components/About.astro';
+import Contact from '@/components/Contact.astro';
+import Footer from '@/components/Footer.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ikhwanulhakim.dev</title>
-  </head>
-  <body>
-    <h1>ikhwanulhakim.dev</h1>
-  </body>
-</html>
+<Layout>
+  <Nav />
+  <I18nScripts />
+  <Hero />
+  <Work />
+  <Experience />
+  <About />
+  <Contact />
+  <Footer />
+  <ScrollReveal />
+</Layout>

@@ -14,7 +14,8 @@
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "astro": "^6.1.8",
-    "astro-seo": "^1.1.0"
+    "astro-seo": "^1.1.0",
+    "sharp": "^0.34.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

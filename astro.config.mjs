@@ -6,4 +6,11 @@ export default defineConfig({
   output: 'static',
   integrations: [sitemap()],
   compressHTML: true,
+  vite: {
+    resolve: {
+      alias: {
+        '@': new URL('./src', import.meta.url).pathname,
+      },
+    },
+  },
 });
