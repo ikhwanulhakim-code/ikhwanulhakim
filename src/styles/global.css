@@ -12,9 +12,11 @@
   --lime: #AAFF00;
   --lime-hover: #C0FF3A;
   --lime-ink: #0a0a0a;
+  --lime-text: #AAFF00;
   --coral: #FF7A66;
   --sky: #7DD3FC;
   --amber: #FBBF24;
+  --amber-text: #FBBF24;
   --violet: #C4B5FD;
   --grid-line: rgba(255,255,255,0.03);
   --grid-line-2: rgba(255,255,255,0.05);
@@ -35,10 +37,12 @@
   --muted: #6E6E66;
   --lime: #7AC000;
   --lime-hover: #6BAA00;
-  --lime-ink: #FFFFFF;
+  --lime-ink: #1a1a00;
+  --lime-text: #4a7a00;
   --coral: #E55A42;
   --sky: #0EA5E9;
   --amber: #D97706;
+  --amber-text: #92400e;
   --violet: #7C3AED;
   --grid-line: rgba(0,0,0,0.04);
   --grid-line-2: rgba(0,0,0,0.06);

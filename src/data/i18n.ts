@@ -107,7 +107,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'success.title': 'Membuka WhatsApp…',
     'success.sub': 'Saya balas paling lama 24 jam. Biasanya jauh lebih cepat dari itu.',
     'fallback.tiny': 'Mau langsung hubungi? Silakan pilih.',
-    'footer.line': 'Didesain & dibangun sendiri oleh <b>Ikhwan</b>. Self-hosted di laptop bekas. <span style="color: var(--lime);">Masih nyala.</span>'
+    'footer.line': 'Didesain & dibangun sendiri oleh <b>Ikhwan</b>. Self-hosted di laptop bekas. <span class="still-running">Masih nyala.</span>'
   },
   en: {
     'nav.work': 'Work',
@@ -215,6 +215,6 @@ export const translations: Record<Lang, Record<string, string>> = {
     'success.title': 'Opening WhatsApp…',
     'success.sub': "I'll get back to you within 24 hours. Usually much sooner.",
     'fallback.tiny': 'Rather just reach out directly? No problem.',
-    'footer.line': 'Designed & built by <b>Ikhwan</b>. Self-hosted on a repurposed laptop. <span style="color: var(--lime);">Still running.</span>'
+    'footer.line': 'Designed & built by <b>Ikhwan</b>. Self-hosted on a repurposed laptop. <span class="still-running">Still running.</span>'
   }
 };
